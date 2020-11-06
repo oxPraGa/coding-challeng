@@ -6,6 +6,11 @@ use App\Http\Resources\Node as NodeResource;
 use App\Repository\GraphRepositoryInterface;
 use App\Repository\NodeRepositoryInterface;
 
+/**
+ * @group Nodes management
+ *
+ * APIs for managing nodes
+ */
 class NodeController extends Controller
 {
     //
@@ -18,6 +23,23 @@ class NodeController extends Controller
         $this->graphRepository = $graphRepository;
     }
 
+    /**
+     * Create a node.
+     *
+     * This endpoint allows you to create a node.
+     *
+     * @urlParam graphId required integer Graph Id. Example: 1
+     *
+     * @response status=201 scenario=created "data":{
+     *    "id": 285,
+     *    "graph_id": 1
+     *  }
+     *
+     * @response status=422 scenario="Unprocessable Entity"
+     * {
+     *  "error": "Graph not found"
+     *  }
+     */
     public function store($graphId)
     {
         $graph = $this->graphRepository->find($graphId);
@@ -30,6 +52,20 @@ class NodeController extends Controller
         }
     }
 
+    /**
+     * Delete a node.
+     *
+     * This endpoint allows you to delete a node.
+     *
+     *  @urlParam nodeId required integer Node Id. Example: 1
+     * 
+     * @response status=200 scenario=success {
+     * "result": "Node deleted"
+     * }
+     * @response status=422 scenario=UnprocessableEntity {
+     * "result": "node not found"
+     * }
+     */
     public function delete($nodeId)
     {
         $node = $this->nodeRepository->find($nodeId);
