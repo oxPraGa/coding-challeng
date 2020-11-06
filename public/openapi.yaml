@@ -1,0 +1,446 @@
+openapi: 3.0.3
+info:
+    title: Coding_Challeng
+    description: ''
+    version: 1.0.0
+servers:
+    -
+        url: 'http://localhost'
+paths:
+    /api/v1/graphs:
+        post:
+            summary: 'Create an empty graph.'
+            description: 'This endpoint allows you to create an empty graph.'
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                201:
+                    description: '201, created'
+                    content:
+                        text/plain:
+                            schema:
+                                type: string
+                                example: "\"data\": {\n \"id\": 1,\n \"name\": \"gssstegssssdsde\",\n \"description\": \"wfwfwfw\"\n }"
+                422:
+                    description: '422, Unprocessable Entity'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    message: 'The given data was invalid.'
+                                    errors: { name: ['The name has already been taken.'] }
+                                properties:
+                                    message: { type: string, example: 'The given data was invalid.' }
+                                    errors: { type: object, example: { name: ['The name has already been taken.'] } }
+            tags:
+                - 'Graph management'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                                    description: 'The name of the graph.'
+                                    example: Blalba
+                                description:
+                                    type: string
+                                    description: 'The description of the graph.'
+                                    example: 'Blalba dwkj jdkwjkjw'
+                            required:
+                                - name
+                                - description
+            security: []
+        get:
+            summary: 'Get all graphs.'
+            description: 'This endpoint allows you to get all graphs.'
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                201:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    data: [{ id: 1, name: gtegssssdsde, description: wfwfwfw }, { id: 3, name: 'Dr. Spencer Crona II', description: gtegsssdsdesss }, { id: 4, name: 'Afton Trantow', description: 'Inventore qui nisi dolorum exercitationem qui vero corporis. Sed occaecati ut quos tempore blanditiis vel saepe eum. Id repellendus placeat voluptas sed aut molestiae.' }, { id: 5, name: 'Prof. Lucio Littel DVM', description: 'Quia molestiae exercitationem est quas minus quasi vitae. Ut necessitatibus atque aut et et odit dolorem officia. Vel nemo blanditiis quod.' }, { id: 6, name: 'Buford Bradtke III', description: 'Temporibus accusamus ut enim vero fuga magni. Tempore nihil nostrum ea deserunt et quisquam provident.' }, { id: 7, name: 'Fanny Becker', description: 'Id quisquam voluptate et vitae eos qui unde. Aut perferendis quo ut. Repudiandae adipisci vel et ipsa repellendus temporibus. Eligendi totam recusandae accusamus et distinctio rem ut sint.' }, { id: 8, name: 'Dr. Keara VonRueden', description: 'Rem est non quas amet. Qui et accusamus expedita voluptatum eum. Sit facere recusandae ut in placeat est ut. Voluptatum molestias omnis accusamus impedit laborum qui placeat.' }, { id: 9, name: 'Novella Homenick', description: 'Et occaecati possimus omnis qui cumque earum laboriosam. Voluptas natus nam aut. Quisquam molestias laudantium quia sit deleniti qui aut. Vel fugit qui qui dignissimos perspiciatis.' }, { id: 10, name: 'Jayne Ullrich', description: 'Quo illum perspiciatis consequuntur. Neque quis sunt est omnis enim et iste. Voluptatem qui voluptas vitae qui pariatur.' }, { id: 11, name: 'Andres Hodkiewicz', description: 'Consectetur non et laboriosam temporibus accusamus. Voluptatibus vel architecto blanditiis et. Eum eaque est deleniti quidem aperiam.' }, { id: 12, name: 'Dr. Eloy Yundt', description: 'Nihil praesentium sit ut quam illum. Sit temporibus enim rerum similique. Eligendi libero vitae deleniti. Quo sapiente et veritatis mollitia deleniti.' }, { id: 13, name: 'Felix Gutkowski', description: 'Porro fugit natus rem doloribus consequatur. Et suscipit expedita sunt enim repellat quia. Velit vel natus corporis autem voluptas quam ab. Pariatur explicabo quia laborum at dolores.' }, { id: 14, name: 'Rosamond O''Connell', description: 'Voluptas temporibus laboriosam ut iure et qui. Accusantium facilis et excepturi corrupti. Ut nobis quia sapiente minus quis enim.' }, { id: 15, name: 'Jessyca Labadie', description: 'Modi et ipsam id soluta quisquam veniam tempore dolorem. Id sunt omnis dolorem dolor. Dicta eos quasi eaque. Autem ad omnis ducimus ea. Est sapiente ipsa sed laborum magni labore.' }, { id: 16, name: 'Mr. Sylvan Lehner PhD', description: 'Culpa minima et odio et nisi. Minima numquam nulla omnis deleniti aut id maiores. Ut eum eos debitis et est. Voluptas cupiditate ea nisi. Laboriosam deserunt accusantium vitae.' }, { id: 18, name: 'Ward Koss', description: 'Cumque odit nostrum vel praesentium beatae. Exercitationem dolorem earum qui sequi adipisci corporis magnam. Id quia ut qui aliquid.' }, { id: 19, name: gssstegssssdsdsasae, description: wfwfwfw }, { id: 20, name: gssstegssssssdsdsasae, description: wfwfwfw }]
+                                properties:
+                                    data: { type: array, example: [{ id: 1, name: gtegssssdsde, description: wfwfwfw }, { id: 3, name: 'Dr. Spencer Crona II', description: gtegsssdsdesss }, { id: 4, name: 'Afton Trantow', description: 'Inventore qui nisi dolorum exercitationem qui vero corporis. Sed occaecati ut quos tempore blanditiis vel saepe eum. Id repellendus placeat voluptas sed aut molestiae.' }, { id: 5, name: 'Prof. Lucio Littel DVM', description: 'Quia molestiae exercitationem est quas minus quasi vitae. Ut necessitatibus atque aut et et odit dolorem officia. Vel nemo blanditiis quod.' }, { id: 6, name: 'Buford Bradtke III', description: 'Temporibus accusamus ut enim vero fuga magni. Tempore nihil nostrum ea deserunt et quisquam provident.' }, { id: 7, name: 'Fanny Becker', description: 'Id quisquam voluptate et vitae eos qui unde. Aut perferendis quo ut. Repudiandae adipisci vel et ipsa repellendus temporibus. Eligendi totam recusandae accusamus et distinctio rem ut sint.' }, { id: 8, name: 'Dr. Keara VonRueden', description: 'Rem est non quas amet. Qui et accusamus expedita voluptatum eum. Sit facere recusandae ut in placeat est ut. Voluptatum molestias omnis accusamus impedit laborum qui placeat.' }, { id: 9, name: 'Novella Homenick', description: 'Et occaecati possimus omnis qui cumque earum laboriosam. Voluptas natus nam aut. Quisquam molestias laudantium quia sit deleniti qui aut. Vel fugit qui qui dignissimos perspiciatis.' }, { id: 10, name: 'Jayne Ullrich', description: 'Quo illum perspiciatis consequuntur. Neque quis sunt est omnis enim et iste. Voluptatem qui voluptas vitae qui pariatur.' }, { id: 11, name: 'Andres Hodkiewicz', description: 'Consectetur non et laboriosam temporibus accusamus. Voluptatibus vel architecto blanditiis et. Eum eaque est deleniti quidem aperiam.' }, { id: 12, name: 'Dr. Eloy Yundt', description: 'Nihil praesentium sit ut quam illum. Sit temporibus enim rerum similique. Eligendi libero vitae deleniti. Quo sapiente et veritatis mollitia deleniti.' }, { id: 13, name: 'Felix Gutkowski', description: 'Porro fugit natus rem doloribus consequatur. Et suscipit expedita sunt enim repellat quia. Velit vel natus corporis autem voluptas quam ab. Pariatur explicabo quia laborum at dolores.' }, { id: 14, name: 'Rosamond O''Connell', description: 'Voluptas temporibus laboriosam ut iure et qui. Accusantium facilis et excepturi corrupti. Ut nobis quia sapiente minus quis enim.' }, { id: 15, name: 'Jessyca Labadie', description: 'Modi et ipsam id soluta quisquam veniam tempore dolorem. Id sunt omnis dolorem dolor. Dicta eos quasi eaque. Autem ad omnis ducimus ea. Est sapiente ipsa sed laborum magni labore.' }, { id: 16, name: 'Mr. Sylvan Lehner PhD', description: 'Culpa minima et odio et nisi. Minima numquam nulla omnis deleniti aut id maiores. Ut eum eos debitis et est. Voluptas cupiditate ea nisi. Laboriosam deserunt accusantium vitae.' }, { id: 18, name: 'Ward Koss', description: 'Cumque odit nostrum vel praesentium beatae. Exercitationem dolorem earum qui sequi adipisci corporis magnam. Id quia ut qui aliquid.' }, { id: 19, name: gssstegssssdsdsasae, description: wfwfwfw }, { id: 20, name: gssstegssssssdsdsasae, description: wfwfwfw }], items: { type: object } }
+            tags:
+                - 'Graph management'
+            security: []
+    '/api/v1/graphs/{id}':
+        put:
+            summary: 'Update a graph meta data.'
+            description: 'This endpoint allows you to update a graph.'
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: '200, success'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    result: 'Graph updated'
+                                properties:
+                                    result: { type: string, example: 'Graph updated' }
+            tags:
+                - 'Graph management'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                description:
+                                    type: string
+                                    description: 'The description of the graph.'
+                                    example: 'Blalba dwkj jdkwjkjw'
+                                name:
+                                    type: string
+                                    description: 'The name of the graph.'
+                                    example: Blalba
+                            required:
+                                - description
+                                - name
+            security: []
+        delete:
+            summary: 'Delete a graph.'
+            description: 'This endpoint allows you to delete a graph.'
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: '200, success'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    result: 'Graph deleted'
+                                properties:
+                                    result: { type: string, example: 'Graph deleted' }
+                422:
+                    description: '422, UnprocessableEntity'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    result: 'Graph not found'
+                                properties:
+                                    result: { type: string, example: 'Graph not found' }
+            tags:
+                - 'Graph management'
+            security: []
+        get:
+            summary: 'Get single graphs.'
+            description: 'This endpoint allows you to get single graphs with nodes & relations.'
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                201:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    data: { id: 1, name: gtegssssdsde, description: wfwfwfw, nodes: [{ id: 1, relation: { parents: [], childs: [] } }, { id: 3, relation: { parents: [], childs: [] } }, { id: 4, relation: { parents: [], childs: [] } }, { id: 5, relation: { parents: [], childs: [] } }, { id: 6, relation: { parents: [], childs: [] } }, { id: 7, relation: { parents: [], childs: [] } }, { id: 8, relation: { parents: [], childs: [] } }, { id: 9, relation: { parents: [], childs: [] } }, { id: 285, relation: { parents: [], childs: [] } }] }
+                                properties:
+                                    data: { type: object, example: { id: 1, name: gtegssssdsde, description: wfwfwfw, nodes: [{ id: 1, relation: { parents: [], childs: [] } }, { id: 3, relation: { parents: [], childs: [] } }, { id: 4, relation: { parents: [], childs: [] } }, { id: 5, relation: { parents: [], childs: [] } }, { id: 6, relation: { parents: [], childs: [] } }, { id: 7, relation: { parents: [], childs: [] } }, { id: 8, relation: { parents: [], childs: [] } }, { id: 9, relation: { parents: [], childs: [] } }, { id: 285, relation: { parents: [], childs: [] } }] } }
+            tags:
+                - 'Graph management'
+            security: []
+        parameters:
+            -
+                in: path
+                name: id
+                description: 'numeric Graph Id.'
+                example: '1'
+                required: true
+                schema:
+                    type: string
+    '/api/v1/nodes/{graphId}':
+        post:
+            summary: 'Create a node.'
+            description: 'This endpoint allows you to create a node.'
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                201:
+                    description: '201, created'
+                    content:
+                        text/plain:
+                            schema:
+                                type: string
+                                example: "\"data\":{\n   \"id\": 285,\n   \"graph_id\": 1\n }"
+                422:
+                    description: '422, Unprocessable Entity'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    error: 'Graph not found'
+                                properties:
+                                    error: { type: string, example: 'Graph not found' }
+            tags:
+                - 'Nodes management'
+            security: []
+        parameters:
+            -
+                in: path
+                name: graphId
+                description: 'integer Graph Id.'
+                example: '1'
+                required: true
+                schema:
+                    type: string
+    '/api/v1/nodes/{childId}':
+        delete:
+            summary: 'Delete a node.'
+            description: 'This endpoint allows you to delete a node.'
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: '200, success'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    result: 'Node deleted'
+                                properties:
+                                    result: { type: string, example: 'Node deleted' }
+                422:
+                    description: '422, UnprocessableEntity'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    result: 'node not found'
+                                properties:
+                                    result: { type: string, example: 'node not found' }
+            tags:
+                - 'Nodes management'
+            security: []
+        parameters:
+            -
+                in: path
+                name: childId
+                description: ''
+                example: nobis
+                required: true
+                schema:
+                    type: string
+            -
+                in: path
+                name: nodeId
+                description: 'integer Node Id.'
+                example: '1'
+                required: true
+                schema:
+                    type: string
+    '/api/v1/relations/{parentId}/{childId}':
+        post:
+            summary: 'Create a relation.'
+            description: 'This endpoint allows you to create a relation betwen 2 nodes.'
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                201:
+                    description: '201, created'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    result: 'Relation created'
+                                properties:
+                                    result: { type: string, example: 'Relation created' }
+                422:
+                    description: '422, UnprocessableEntity'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    error: 'Relation exists'
+                                properties:
+                                    error: { type: string, example: 'Relation exists' }
+            tags:
+                - 'Relations management'
+            security: []
+        delete:
+            summary: 'Delete a relation.'
+            description: 'This endpoint allows you to delete a relation.'
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: '200, success'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    result: 'Relation deleted'
+                                properties:
+                                    result: { type: string, example: 'Relation deleted' }
+                422:
+                    description: '422, UnprocessableEntity'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    error: 'Relation not exists'
+                                properties:
+                                    error: { type: string, example: 'Relation not exists' }
+            tags:
+                - 'Relations management'
+            security: []
+        parameters:
+            -
+                in: path
+                name: parentId
+                description: 'integer Node Id.'
+                example: '1'
+                required: true
+                schema:
+                    type: string
+            -
+                in: path
+                name: childId
+                description: 'integer Node Id.'
+                example: '2'
+                required: true
+                schema:
+                    type: string
